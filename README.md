@@ -13,6 +13,9 @@ https://falltergeist.org/
 - [GLM](http://glm.g-truc.net/)
 - [Zlib](http://www.zlib.net/)
 
+### macOS Specific
+- [dylibdundler](https://formulae.brew.sh/formula/dylibbundler)
+
 ## Compilation
 
 ### Linux
@@ -62,6 +65,10 @@ devenv /build Debug falltergeist.sln
 ```
 Or open and build the solution in Visual Studio instead of running the devenv command.
 If using VS2017 or building on Release then use: `“Visual Studio 15 2017 Win64”`, or `devenv /build Debug` respectively.
+
+## macOS
+
+macOS
 
 
 ## Running
