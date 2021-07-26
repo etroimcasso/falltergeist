@@ -39,7 +39,8 @@ cp -r ../data /Volumes/Falltergeist/Falltergeist.app/Contents/Resources
 
 #create final dmg
 diskutil eject /Volumes/falltergeist
-hdiutil convert ~/.falltergeisttemp/falltergeist.sparseimage -format UDZO -o ~/Desktop/Falltergeist-0.3.1.dmg
+mkdir -p "`pwd`/../build/macos"
+hdiutil convert ~/.falltergeisttemp/falltergeist.sparseimage -format UDZO -o "`pwd`/../build/macos/Falltergeist-0.3.1.dmg"
 
 rm ~/.falltergeisttemp/falltergeist.sparseimage 
 rmdir ~/.falltergeisttemp
