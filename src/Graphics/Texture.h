@@ -2,7 +2,11 @@
 
 #include <memory>
 #include <vector>
-#include <GL/glew.h>
+#ifdef __apple_build_version__
+    #include <glew.h>
+#else
+    #include <GL/glew.h>
+#endif
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include "../Graphics/Point.h"

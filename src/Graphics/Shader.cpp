@@ -6,7 +6,11 @@
 #include "../Graphics/Shader.h"
 #include "../Logger.h"
 #define GLM_FORCE_RADIANS
-#include <glm/gtc/type_ptr.hpp>
+#ifdef __apple_build_version__
+    #include <gtc/type_ptr.hpp>
+#else
+    #include <glm/gtc/type_ptr.hpp>
+#endif  
 
 namespace Falltergeist
 {

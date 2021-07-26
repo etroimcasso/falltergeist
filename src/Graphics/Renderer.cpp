@@ -1,7 +1,11 @@
 ﻿#include <cmath>
 #include <memory>
 #define GLM_FORCE_RADIANS
-#include <glm/gtc/matrix_transform.hpp>
+#ifdef __apple_build_version__
+    #include <gtc/matrix_transform.hpp>
+#else
+    #include <glm/gtc/matrix_transform.hpp>
+#endif
 #include <SDL_image.h>
 #include "../Base/Buffer.h"
 #include "../CrossPlatform.h"

@@ -2,7 +2,11 @@
 
 #include <array>
 #include <vector>
-#include <glm/glm.hpp>
+#ifdef __apple_build_version__
+    #include <glm.hpp>
+#else
+    #include <glm/glm.hpp>
+#endif
 #include "../Format/Enums.h"
 #include "../Graphics/Renderer.h"
 

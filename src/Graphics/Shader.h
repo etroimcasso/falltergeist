@@ -3,8 +3,13 @@
 #include <map>
 #include <string>
 #include <vector>
-#include <glm/glm.hpp>
-#include <GL/glew.h>
+#ifdef __apple_build_version__
+    #include <glm.hpp>
+    #include <glew.h>
+#else
+    #include <glm/glm.hpp>
+    #include <GL/glew.h>
+#endif
 #include <SDL.h>
 
 namespace Falltergeist
