@@ -1,13 +1,10 @@
 #!/bin/sh
-TEMPDIR=~/.falltergeisttemp
 
-mkdir -p $TEMPDIR
-hdiutil create -fs HFS+ -volname "Falltergeist" -ov -type SPARSE -attach "${TEMPDIR}/falltergeist.sparseimage"
-ls /Volumes
+mkdir -p ~/.falltergeisttemp
+hdiutil create -fs HFS+ -volname "Falltergeist" -ov -type SPARSE -attach ~/.falltergeisttemp/falltergeist.sparseimage
 
 #create dirs
-# ln -s /Desktop /Volumes/Falltergeist/Applications
-
+ln -s /Applications /Volumes/Falltergeist/Applications
 mkdir /Volumes/Falltergeist/Falltergeist.app
 mkdir /Volumes/Falltergeist/Falltergeist.app/Contents
 mkdir /Volumes/Falltergeist/Falltergeist.app/Contents/Resources
@@ -42,10 +39,10 @@ cp -r ../data /Volumes/Falltergeist/Falltergeist.app/Contents/Resources
 
 #create final dmg
 diskutil eject /Volumes/falltergeist
-hdiutil convert ${TEMPDIR}/falltergeist.sparseimage -format UDZO -o ~/Desktop/Falltergeist-0.3.1.dmg
+hdiutil convert ~/.falltergeisttemp/falltergeist.sparseimage -format UDZO -o ~/Desktop/Falltergeist-0.3.1.dmg
 
-rm ${TEMPDIR}/falltergeist.sparseimage 
-rmdir ${TEMPDIR}
+rm ~/.falltergeisttemp/falltergeist.sparseimage 
+rmdir ~/.falltergeisttemp
 
 echo "Done!"
 

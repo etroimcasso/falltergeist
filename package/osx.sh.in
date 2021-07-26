@@ -1,6 +1,7 @@
 #!/bin/sh
 
-hdiutil create -fs HFS+ -volname "Falltergeist" -ov -type SPARSE -attach "/Volumes/falltergeist"
+mkdir -p ~/.falltergeisttemp
+hdiutil create -fs HFS+ -volname "Falltergeist" -ov -type SPARSE -attach ~/.falltergeisttemp/falltergeist.sparseimage
 
 #create dirs
 ln -s /Applications /Volumes/Falltergeist/Applications
@@ -28,18 +29,20 @@ iconutil -c icns MyIcon.iconset -o /Volumes/Falltergeist/Falltergeist.app/Conten
 rm -R MyIcon.iconset
 
 #copy binary
-cp falltergeist /Volumes/Falltergeist/Falltergeist.app/Contents/MacOS/Falltergeist
+cp ../falltergeist /Volumes/Falltergeist/Falltergeist.app/Contents/MacOS/Falltergeist
 
 #fix binary deps
 dylibbundler -b -x /Volumes/Falltergeist/Falltergeist.app/Contents/MacOS/Falltergeist -d /Volumes/Falltergeist/Falltergeist.app/Contents/libs-intel -od -p @executable_path/../libs-intel
 
 #copy custom data
-cp -r data /Volumes/Falltergeist/Falltergeist.app/Contents/Resources
+cp -r ../data /Volumes/Falltergeist/Falltergeist.app/Contents/Resources
 
 #create final dmg
 diskutil eject /Volumes/falltergeist
-hdiutil convert /Volumes/falltergeist.sparseimage -format UDZO -o "Falltergeist-@falltergeist_VERSION@"
-rm /Volumes/falltergeist.sparseimage 
+hdiutil convert ~/.falltergeisttemp/falltergeist.sparseimage -format UDZO -o ~/Desktop/Falltergeist-0.3.1.dmg
+
+rm ~/.falltergeisttemp/falltergeist.sparseimage 
+rmdir ~/.falltergeisttemp
 
 echo "Done!"
 
